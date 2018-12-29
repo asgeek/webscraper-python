@@ -7,7 +7,7 @@ object TestBc : BuildType({
     name = "Test_BC"
 
     vcs {
-        root(test-vcs)
+        root(DslContext.settingsRoot)
     }
 
     steps {
