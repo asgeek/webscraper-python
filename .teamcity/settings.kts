@@ -7,7 +7,7 @@ object TestBc : BuildType({
     name = "Test_BC"
 
     vcs {
-        root(TestProj_TestVcs)
+        root(test-vcs)
     }
 
     steps {
