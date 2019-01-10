@@ -1,6 +1,5 @@
 import jetbrains.buildServer.configs.kotlin.v2018_2.*
 import jetbrains.buildServer.configs.kotlin.v2018_2.buildSteps.script
-import jetbrains.buildServer.configs.kotlin.v2018_2.vcs.GitVcsRoot
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -28,28 +27,26 @@ version = "2018.2"
 
 project {
 
-    vcsRoot(TestVcs)
-
-    buildType(TestBc)
+    buildType(TestBuildConfForPoC)
+    buildType(TestBuildConfForPoC1)
 }
 
-object TestBc : BuildType({
-    name = "Test_BC"
-
-    vcs {
-        root(TestVcs)
-    }
+object TestBuildConfForPoC : BuildType({
+    name = "TEST_BuildConf_for_PoC"
 
     steps {
         script {
-            name = "test-build-step"
-            scriptContent = "test.bat"
+            scriptContent = """echo "Hello PoC Test!""""
         }
     }
 })
 
-object TestVcs : GitVcsRoot({
-    name = "test-vcs"
-    url = "https://github.com/asgeek/webscraper-python.git"
-    pushUrl = "https://github.com/asgeek/webscraper-python.git"
+object TestBuildConfForPoC1 : BuildType({
+    name = "TEST_BuildConf_for_PoC_1"
+
+    steps {
+        script {
+            scriptContent = """echo "Hello PoC Test 2""""
+        }
+    }
 })
